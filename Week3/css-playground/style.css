@@ -1,0 +1,30 @@
+/*
+Order of presedence:
+1. Inline styles
+2. Internal styles
+3. External styles
+
+Caveat: !important will overide any precedence
+*/
+
+/* html tag selection */
+body{
+    background-color:#f9e2e2;
+}
+
+p {
+    color: purple;
+    /* background-color: orange; */
+}
+
+/* class selector */
+.middle-p {
+    color: rgb(232, 118, 194);
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* id selection */
+#new-id {
+
+}
