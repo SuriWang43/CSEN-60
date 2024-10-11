@@ -48,5 +48,11 @@ ways to accomplish pre-work
     align-items: center;
     justify-content: space-between;*/
     height: 100vh;
-}
+} 
 /* flex cannot take up full screen */
+
+/* footer {
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+} */
