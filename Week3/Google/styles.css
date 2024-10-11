@@ -49,3 +49,9 @@ ways to accomplish pre-work
     height: 100vh;
 }
 /* flex cannot take up full screen */
+
+/* footer {
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+} */
