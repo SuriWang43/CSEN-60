@@ -8,6 +8,7 @@ const tagLists = Array.from(document.querySelectorAll("article .tags"));
 // Search Functions
 
 function initializeSearch(newParentElement) {
+  console.log("InitializeSearch function was executed")
   const params = new URLSearchParams(window.location.search);
   if (newParentElement === null) {
     console.error(
@@ -25,6 +26,7 @@ function initializeSearch(newParentElement) {
 
 
 function hideArticles() {
+  console.log("hideArticles function was executed")
   if (searchTags.length === 0) {
     for (const article of document.querySelectorAll("article")) {
       article.classList.remove("hidden");
@@ -44,7 +46,16 @@ function hideArticles() {
    * then add "hidden" to that article's classList
    * else, remove "hidden" from that article's classList
    */
-  // write your code here
+// Select all articles
+
+// Iterate over the NodeList using a for loop
+for(const article of document.querySelectorAll("article")){
+  if(!articlesWithTags.includes(article)){
+    article.classList.add("hidden")
+  }else{
+    article.classList.remove("hidden")
+  }
+}
 }
 
 /**
@@ -52,19 +63,23 @@ function hideArticles() {
  * the button will remove the corresponding tag from both the DOM and the searchTags array.
  * This function also calls hideArticles to update the articles displayed after removal.
  */
-function createTag(text) {
-  const button = document.createElement("button");
-  button.classList.add("tag");
-  button.textContent = text;
-}
+
   /**
    * create a new element called button
    * add the class "tag" to its classList
    * set the button's textContent property to text (the passed in argument)
    */
   // write your code here
+  
+  
+  function createTag(text) {
+    console.log("createTag function was executed")
+    const button = document.createElement("button");
+    button.classList.add("tag");
+    button.textContent = text;
+  
 
-  function remove()) {
+  function remove() {
     button.remove();
     const index = searchTags.indexOf(text);
     if (index !== -1) {
@@ -79,9 +94,13 @@ function createTag(text) {
    * return the button element 
    */
   // write your code here
+  button.addEventListener("click",remove)
+  return button
 }
 
+
 function findArticlesWithTag(phrase) {
+  console.log("findArticlesWithTag function was executed")
   const articles = [];
   const sanitizedPhrase = phrase.toLowerCase().trim();
   for (const tl of tagLists) {
@@ -99,6 +118,7 @@ function findArticlesWithTag(phrase) {
 
 
 function addSearchTerm(text) {
+  console.log("AddSearchTerm function was executed")
   parentElement.appendChild(createTag(text));
   searchTags.push(text);
   hideArticles();
@@ -107,6 +127,7 @@ function addSearchTerm(text) {
 // Handlers
 
 function onSearch(event) {
+  console.log("OnSearch function was executed")
   const input = event.currentTarget;
   /**
    * If event.key equals "Enter":
@@ -114,11 +135,17 @@ function onSearch(event) {
    * set input value to an empty string
    */
   // write your code here
+  if(event.key==="Enter"){
+    addSearchTerm(input.value)
+    input.value="";
+  }
+  //event is anything user do on the keyboard or mouse.
 }
 
 // Main function
 
 function main() {
+  console.log("Main function was executed")
   initializeSearch(document.querySelector("#searched-tags"));
 
   document
@@ -130,8 +157,8 @@ function main() {
 main();
 
 /**
- * Order of execution for each event:
- * Pressing Enter: 
- * Clicking to Remove a Tag: 
- * Loading the Page: 
+ * Order of execution for each event: Main-->InitializeSearch-->OnSearch-->AddSearchTerm-->createTag-->hideArticles-->findArticlesWithTag-->hideArticles
+ * Pressing Enter: OnSearch function was executed. AddSearchTerm function was executed. createTag function was executed. hideArticles function was executed. findArticlesWithTag function was executed.
+ * Clicking to Remove a Tag: hideArticles function was executed.
+ * Loading the Page: Main function was executed. InitializeSearch function was executed.
  */
