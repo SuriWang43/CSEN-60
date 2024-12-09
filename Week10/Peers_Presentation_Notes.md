@@ -25,3 +25,12 @@ Smolarski Math13 Group:
     - pops up and highlights related keywords
     - if no related content: no results found
     - const result local storage
+
+
+## Friday
+Bluey Group:
+- manual scroll using the touch pad
+- inserting mp3 in the website
+- quiz function
+    - able to interact
+    - can detect how many right and wrong the user answer is
